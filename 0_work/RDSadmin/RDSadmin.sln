@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RDSadmin", "RDSadmin\RDSadmin.vcxproj", "{0B3734D8-52D6-4196-848D-EEFB98CC9D12}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup_RDSadmin", "Setup_RDSadmin\Setup_RDSadmin.vdproj", "{558209F0-DEFF-4259-84C2-CD671B85FF14}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0B3734D8-52D6-4196-848D-EEFB98CC9D12}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0B3734D8-52D6-4196-848D-EEFB98CC9D12}.Debug|Win32.Build.0 = Debug|Win32
+		{0B3734D8-52D6-4196-848D-EEFB98CC9D12}.Release|Win32.ActiveCfg = Release|Win32
+		{0B3734D8-52D6-4196-848D-EEFB98CC9D12}.Release|Win32.Build.0 = Release|Win32
+		{558209F0-DEFF-4259-84C2-CD671B85FF14}.Debug|Win32.ActiveCfg = Debug
+		{558209F0-DEFF-4259-84C2-CD671B85FF14}.Release|Win32.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

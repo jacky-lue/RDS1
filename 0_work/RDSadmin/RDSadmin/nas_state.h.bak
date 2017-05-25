@@ -1,0 +1,104 @@
+#pragma once
+
+#define RDS_NAS_ROOT_DIR			"Z:\\RDS\\"
+
+//for testing purpose....
+//#define RDS_NAS_ROOT_DIR			"C:\\RDS\\"
+
+#define DEFAULT_ADMIN_LOGIN_ID		"admin"
+#define DEFAULT_ADMIN_LOGIN_PW		"12345"
+#define DEFAULT_ADMIN_LOGIN_NAME	"Not Initialed"
+#define DEFAULT_ADMIN_SQ_INDEX		0
+#define DEFAULT_ADMIN_SQ_ANSWER		"My Home"
+#define RDS_NAS_ADMIN_FILENAME		"admin.ini"
+#define RDS_NAS_USERLIST_FILENAME	"users.ini"
+#define RDS_NAS_USERLIST2_FILENAME	"user2.ini"
+#define RDS_NAS_USERS_PER_PAGE		9
+
+//RDS directory structure
+#define RDS_NAS_REPORT_DIR		"RPT\\"
+#define RDS_NAS_SERVICE_DIR		"OSC\\"
+#define RDS_NAS_BY_UID_DIR		"UID\\"
+#define RDS_NAS_BY_DATA_DIR		"DATE\\"
+#define RDS_NAS_UID_SUBDIR_1ST_PART	3
+
+
+
+namespace RDS_NAS {
+	using namespace System;
+	using namespace System::IO;
+
+	ref class nas_state
+	{
+	public:
+		//-----------------------------class member (variable)
+		Boolean HasAdminIni;
+		Boolean HasUsersIni;
+
+		int total_user_count;
+		int total_page;
+		int current_user_no;
+		
+		//admin account screen
+		String^ Admin_ID;
+		String^ Admin_Name;
+		String^ Admin_PW;
+		unsigned int Admin_SQ_index;
+		String^ Admin_SQanswer;
+
+		//user account page
+		String^ user_ID;
+		String^ user_Name;
+		String^ user_PW;
+
+		//user list pgae
+		String^ listName1;
+		String^ listName2;
+		String^ listName3;
+		String^ listName4;
+		String^ listName5;
+		String^ listName6;
+		String^ listName7;
+		String^ listName8;
+		String^ listName9;
+	public:
+		//-----------------------------class member functions
+		nas_state();
+		//~nas_state();
+
+		Boolean Check_Admin_Ini();
+		Boolean Check_User_Ini();
+		void Write_Admin_Ini(
+			String^ Admin_ID,
+			String^ Admin_Name,
+			String^ Admin_PW,
+			unsigned int Admin_SQ_index,
+			String^ Admin_SQanswer
+			);
+		int Read_Admin_ini();
+		int Delete_Admin_ini();
+		void Overwrite_Admin_inUsers(
+			String^ Admin_ID,
+			String^ Admin_Name,
+			String^ Admin_PW
+			);
+		int Read_UserName_byPage(
+			int page
+			);
+		int Add_Users_Ini(
+			String^ user_ID,
+			String^ user_Name,
+			String^ user_PW
+			);
+		int Get_User_Info();  //using current_user_No to get user name/ID/PW
+		int Overwrite_currentUser(  //using current_user_No
+			String^ user_ID,
+			String^ user_Name,
+			String^ user_PW
+			);
+		int Delete_currentUser();  //using current_user_No
+		String^ nasStringEncode(String^ inStr);
+		String^ nasStringDecode(String^ inStr);
+	};                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+
+}

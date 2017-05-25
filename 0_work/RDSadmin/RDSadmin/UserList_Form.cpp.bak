@@ -1,0 +1,351 @@
+#include "UserList_Form.h"
+
+using namespace System;
+using namespace System::Windows::Forms;
+using namespace RDSadmin;
+
+System::Void UserList_Form::UserList_Form_Load(System::Object^  sender, System::EventArgs^  e){
+	int display_cnt;
+	int i, ino;
+	//reset UI
+	this->active_list = 0; //none be selected
+	this->label_list1->Text = "";
+	this->label_list2->Text = "";
+	this->label_list3->Text = "";
+	this->label_list4->Text = "";
+	this->label_list5->Text = "";
+	this->label_list6->Text = "";
+	this->label_list7->Text = "";
+	this->label_list8->Text = "";
+	this->label_list9->Text = "";
+	this->page = 0;
+
+	//read user.ini
+	display_cnt = this->iNas.Read_UserName_byPage(this->page);
+
+	//check and display
+	i = 0;
+	do{
+		ino = i + 1 + (this->page * RDS_NAS_USERS_PER_PAGE);
+		if (i == 0) { this->label_list1->Text = "Account #" + ino + " " +this->iNas.nasStringDecode(this->iNas.listName1); }
+		if (i == 1) { this->label_list2->Text = "Account #" + ino + " " +this->iNas.nasStringDecode(this->iNas.listName2); }
+		if (i == 2) { this->label_list3->Text = "Account #" + ino + " " +this->iNas.nasStringDecode(this->iNas.listName3); }
+		if (i == 3) { this->label_list4->Text = "Account #" + ino + " " +this->iNas.nasStringDecode(this->iNas.listName4); }
+		if (i == 4) { this->label_list5->Text = "Account #" + ino + " " +this->iNas.nasStringDecode(this->iNas.listName5); }
+		if (i == 5) { this->label_list6->Text = "Account #" + ino + " " +this->iNas.nasStringDecode(this->iNas.listName6); }
+		if (i == 6) { this->label_list7->Text = "Account #" + ino + " " +this->iNas.nasStringDecode(this->iNas.listName7); }
+		if (i == 7) { this->label_list8->Text = "Account #" + ino + " " +this->iNas.nasStringDecode(this->iNas.listName8); }
+		if (i == 8) { this->label_list9->Text = "Account #" + ino + " " +this->iNas.nasStringDecode(this->iNas.listName9); }
+		i++;
+	} while (i <= display_cnt);
+	if (display_cnt < RDS_NAS_USERS_PER_PAGE){
+		do{
+			if (i == 1){ this->panel_list2->Visible = false; }
+			if (i == 2){ this->panel_list3->Visible = false; }
+			if (i == 3){ this->panel_list4->Visible = false; }
+			if (i == 4){ this->panel_list5->Visible = false; }
+			if (i == 5){ this->panel_list6->Visible = false; }
+			if (i == 6){ this->panel_list7->Visible = false; }
+			if (i == 7){ this->panel_list8->Visible = false; }
+			if (i == 8){ this->panel_list9->Visible = false; }
+			i++;
+		} while (i < RDS_NAS_USERS_PER_PAGE);
+	}
+}
+
+System::Void UserList_Form::button_ServiceCall_Click(System::Object^  sender, System::EventArgs^  e){
+	this->Close();
+}
+
+System::Void UserList_Form::button_Supervisor_Click(System::Object^  sender, System::EventArgs^  e){
+	this->Close();
+	m_MainForm->button_Supervisor_Click(this, e);
+}
+
+System::Void UserList_Form::button_Add_Click(System::Object^  sender, System::EventArgs^  e){
+	this->Close();
+	m_MainForm->showAddUserForm();
+}
+
+System::Void UserList_Form::button_Delete_Click(System::Object^  sender, System::EventArgs^  e){
+}
+System::Void UserList_Form::button_right_Click(System::Object^  sender, System::EventArgs^  e){
+}
+System::Void UserList_Form::button_left_Click(System::Object^  sender, System::EventArgs^  e){
+}
+
+//-----------------------//
+//  Panel active or not  //
+//-----------------------//
+System::Void UserList_Form::panel_list1_MouseClick(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e){
+	if (this->active_list != 1) {
+		this->active_list = 1;
+		this->panel_list1->BackgroundImage = Image::FromFile("list_BG1.bmp"); //---------
+		this->panel_list2->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list3->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list4->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list5->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list6->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list7->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list8->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list9->BackgroundImage = Image::FromFile("list_BG0.bmp");
+	}
+	else{
+		this->active_list = 0;
+		this->panel_list1->BackgroundImage = Image::FromFile("list_BG0.bmp");
+	}
+}
+
+System::Void UserList_Form::panel_list2_MouseClick(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e){
+	if (this->active_list != 2) {
+		this->active_list = 2;
+		this->panel_list1->BackgroundImage = Image::FromFile("list_BG0.bmp"); 
+		this->panel_list2->BackgroundImage = Image::FromFile("list_BG1.bmp"); // 
+		this->panel_list3->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list4->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list5->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list6->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list7->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list8->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list9->BackgroundImage = Image::FromFile("list_BG0.bmp");
+	}
+	else{
+		this->active_list = 0;
+		this->panel_list2->BackgroundImage = Image::FromFile("list_BG0.bmp");
+	}
+}
+
+System::Void UserList_Form::panel_list3_MouseClick(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e){
+	if (this->active_list != 3) {
+		this->active_list = 3;
+		this->panel_list1->BackgroundImage = Image::FromFile("list_BG0.bmp"); 
+		this->panel_list2->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list3->BackgroundImage = Image::FromFile("list_BG1.bmp"); //
+		this->panel_list4->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list5->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list6->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list7->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list8->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list9->BackgroundImage = Image::FromFile("list_BG0.bmp");
+	}
+	else{
+		this->active_list = 0;
+		this->panel_list3->BackgroundImage = Image::FromFile("list_BG0.bmp");
+	}
+}
+
+System::Void UserList_Form::panel_list4_MouseClick(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e){
+	if (this->active_list != 4) {
+		this->active_list = 4;
+		this->panel_list1->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list2->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list3->BackgroundImage = Image::FromFile("list_BG0.bmp"); 
+		this->panel_list4->BackgroundImage = Image::FromFile("list_BG1.bmp"); //
+		this->panel_list5->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list6->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list7->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list8->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list9->BackgroundImage = Image::FromFile("list_BG0.bmp");
+	}
+	else{
+		this->active_list = 0;
+		this->panel_list4->BackgroundImage = Image::FromFile("list_BG0.bmp");
+	}
+}
+
+System::Void UserList_Form::panel_list5_MouseClick(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e){
+	if (this->active_list != 5) {
+		this->active_list = 5;
+		this->panel_list1->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list2->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list3->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list4->BackgroundImage = Image::FromFile("list_BG0.bmp"); 
+		this->panel_list5->BackgroundImage = Image::FromFile("list_BG1.bmp"); //
+		this->panel_list6->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list7->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list8->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list9->BackgroundImage = Image::FromFile("list_BG0.bmp");
+	}
+	else{
+		this->active_list = 0;
+		this->panel_list5->BackgroundImage = Image::FromFile("list_BG0.bmp");
+	}
+}
+
+System::Void UserList_Form::panel_list6_MouseClick(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e){
+	if (this->active_list != 6) {
+		this->active_list = 6;
+		this->panel_list1->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list2->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list3->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list4->BackgroundImage = Image::FromFile("list_BG0.bmp"); 
+		this->panel_list5->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list6->BackgroundImage = Image::FromFile("list_BG1.bmp"); //
+		this->panel_list7->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list8->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list9->BackgroundImage = Image::FromFile("list_BG0.bmp");
+	}
+	else{
+		this->active_list = 0;
+		this->panel_list6->BackgroundImage = Image::FromFile("list_BG0.bmp");
+	}
+}
+
+System::Void UserList_Form::panel_list7_MouseClick(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e){
+	if (this->active_list != 7) {
+		this->active_list = 7;
+		this->panel_list1->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list2->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list3->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list4->BackgroundImage = Image::FromFile("list_BG0.bmp"); 
+		this->panel_list5->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list6->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list7->BackgroundImage = Image::FromFile("list_BG1.bmp"); //
+		this->panel_list8->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list9->BackgroundImage = Image::FromFile("list_BG0.bmp");
+	}
+	else{
+		this->active_list = 0;
+		this->panel_list7->BackgroundImage = Image::FromFile("list_BG0.bmp");
+	}
+}
+
+System::Void UserList_Form::panel_list8_MouseClick(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e){
+	if (this->active_list != 8) {
+		this->active_list = 8;
+		this->panel_list1->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list2->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list3->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list4->BackgroundImage = Image::FromFile("list_BG0.bmp"); 
+		this->panel_list5->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list6->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list7->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list8->BackgroundImage = Image::FromFile("list_BG1.bmp"); //
+		this->panel_list9->BackgroundImage = Image::FromFile("list_BG0.bmp");
+	}
+	else{
+		this->active_list = 0;
+		this->panel_list8->BackgroundImage = Image::FromFile("list_BG0.bmp");
+	}
+}
+
+System::Void UserList_Form::panel_list9_MouseClick(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e){
+	if (this->active_list != 9) {
+		this->active_list = 9;
+		this->panel_list1->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list2->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list3->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list4->BackgroundImage = Image::FromFile("list_BG0.bmp"); 
+		this->panel_list5->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list6->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list7->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list8->BackgroundImage = Image::FromFile("list_BG0.bmp");
+		this->panel_list9->BackgroundImage = Image::FromFile("list_BG1.bmp"); //
+	}
+	else{
+		this->active_list = 0;
+		this->panel_list9->BackgroundImage = Image::FromFile("list_BG0.bmp");
+	}
+}
+
+//----------------//
+// label active . //
+//----------------//
+System::Void UserList_Form::label_list1_Click(System::Object^  sender, System::EventArgs^  e){
+	if (this->active_list1 == false) {
+		this->active_list1 = true;
+		this->panel_list1->BackgroundImage = Image::FromFile("list_BG1.bmp");
+	}
+	else{
+		this->active_list1 = false;
+		this->panel_list1->BackgroundImage = Image::FromFile("list_BG0.bmp");
+	}
+}
+
+System::Void UserList_Form::label_list2_Click(System::Object^  sender, System::EventArgs^  e){
+	if (this->active_list2 == false) {
+		this->active_list2 = true;
+		this->panel_list2->BackgroundImage = Image::FromFile("list_BG1.bmp");
+	}
+	else{
+		this->active_list2 = false;
+		this->panel_list2->BackgroundImage = Image::FromFile("list_BG0.bmp");
+	}
+}
+
+System::Void UserList_Form::label_list3_Click(System::Object^  sender, System::EventArgs^  e){
+	if (this->active_list3 == false) {
+		this->active_list3 = true;
+		this->panel_list3->BackgroundImage = Image::FromFile("list_BG1.bmp");
+	}
+	else{
+		this->active_list3 = false;
+		this->panel_list3->BackgroundImage = Image::FromFile("list_BG0.bmp");
+	}
+}
+
+System::Void UserList_Form::label_list4_Click(System::Object^  sender, System::EventArgs^  e){
+	if (this->active_list4 == false) {
+		this->active_list4 = true;
+		this->panel_list4->BackgroundImage = Image::FromFile("list_BG1.bmp");
+	}
+	else{
+		this->active_list4 = false;
+		this->panel_list4->BackgroundImage = Image::FromFile("list_BG0.bmp");
+	}
+}
+
+System::Void UserList_Form::label_list5_Click(System::Object^  sender, System::EventArgs^  e){
+	if (this->active_list5 == false) {
+		this->active_list5 = true;
+		this->panel_list5->BackgroundImage = Image::FromFile("list_BG1.bmp");
+	}
+	else{
+		this->active_list5 = false;
+		this->panel_list5->BackgroundImage = Image::FromFile("list_BG0.bmp");
+	}
+}
+
+System::Void UserList_Form::label_list6_Click(System::Object^  sender, System::EventArgs^  e){
+	if (this->active_list6 == false) {
+		this->active_list6 = true;
+		this->panel_list6->BackgroundImage = Image::FromFile("list_BG1.bmp");
+	}
+	else{
+		this->active_list6 = false;
+		this->panel_list6->BackgroundImage = Image::FromFile("list_BG0.bmp");
+	}
+}
+
+System::Void UserList_Form::label_list7_Click(System::Object^  sender, System::EventArgs^  e){
+	if (this->active_list7 == false) {
+		this->active_list7 = true;
+		this->panel_list7->BackgroundImage = Image::FromFile("list_BG1.bmp");
+	}
+	else{
+		this->active_list7 = false;
+		this->panel_list7->BackgroundImage = Image::FromFile("list_BG0.bmp");
+	}
+}
+
+System::Void UserList_Form::label_list8_Click(System::Object^  sender, System::EventArgs^  e){
+	if (this->active_list8 == false) {
+		this->active_list8 = true;
+		this->panel_list8->BackgroundImage = Image::FromFile("list_BG1.bmp");
+	}
+	else{
+		this->active_list8 = false;
+		this->panel_list8->BackgroundImage = Image::FromFile("list_BG0.bmp");
+	}
+}
+
+System::Void UserList_Form::label_list9_Click(System::Object^  sender, System::EventArgs^  e){
+	if (this->active_list9 == false) {
+		this->active_list9 = true;
+		this->panel_list9->BackgroundImage = Image::FromFile("list_BG1.bmp");
+	}
+	else{
+		this->active_list9 = false;
+		this->panel_list9->BackgroundImage = Image::FromFile("list_BG0.bmp");
+	}
+}

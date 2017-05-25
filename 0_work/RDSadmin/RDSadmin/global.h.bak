@@ -1,0 +1,79 @@
+//here is Global variable area.
+
+#include "CauseEquip.h"
+#include "data4chart.h"
+
+//---------------------------------------------------------------------------------
+//For total error cause (Reading)
+struct Encode_Cause_Equpiment_type RPT_all_Cause[CUASE_RPT_TABLE_SIZE] = {
+	0, "reserved",
+	1, "Water temp sensor defect",
+	2, "Hi-limit temp sensor defect",
+	3, "Circ Pump defect",
+	4, "Fuse on board defect",
+	5, "Pipe Blockage",
+	6, "Dirty Filter",
+	7, "Flow Switch defect",
+	8, "UV light usage expired",
+	9, "Filter Cartridge expired",
+	10, "Board defect",
+	11, "Topside defect",
+	12, "Pump-1 Hi (wire) defect",
+	13, "Pump-1 Lo (wire) defect",
+	14, "Pump-2 Hi (wire) defect",
+	15, "Pump-2 Lo (wire) defect",
+	16, "Pump-3 Hi (wire) defect",
+	17, "Pump-3 Lo (wire) defect",
+	18, "Blower (wire) defect",
+	19, "Circ Pump + UV (wire) defect",
+	20, "Heater (wire) defect",
+	21, "Topside panel cable loosen or defect",
+	22, "PH sensor problem",
+	23, "PH meter problem",
+	24, "ORP sensor problem",
+	25, "ORP meter problem"
+};
+
+struct Encode_Cause_Equpiment_type RPT_all_Equip[EQUIP_RPT_TABLE_SIZE] = {
+	0, "Reserved",
+	1, "Water temp sensor (6600-166)",
+	2, "Hi-limit temp sensor (6600-129)",
+	3, "Circ. Pump (6000-125)",
+	4, "Fuse (6560-133)",
+	5, "Pipe (6540-788)",
+	6, "Filter cartridge (6473-161)",
+	7, "Flow Switch (6560-860)",
+	8, "UV light (6472-841)",
+	9, "Filter Cartridge (6473-161)",
+	10, "Board (6600-028)",
+	11, "Topside (6600-860)",
+	12, "Pump-1 (6500-913)",
+	13, "Pump-1 (6500-913)",
+	14, "Pump-2 (6500-352)",
+	15, "Pump-2 (6500-352)",
+	16, "Pump-3 (6500-491)",
+	17, "Pump-3 (6500-491)",
+	18, "Blower (6500-148)",
+	19, "Circ. Pump + UV light",
+	20, "Heater (6500-056)",
+	21, "Topside panel cable (6300-558)",
+	22, "PH sensor (7600-018)",
+	23, "PH meter (7600-192)",
+	24, "ORP sensor (7600-025)",
+	25, "ORP meter (7600-122)"
+};
+
+//--------------------------------------------------------------------------------
+//For Dashboard-2 chart (Tempary)
+struct ChartArea_1_XY_type Chart_1_Data[DASHBOARD2_CHART1_SERIES_LENNGTH] = {
+	{"Dealer #1" , 87},
+	{"Dealer #9" , 54},
+	{"Dealer #3" , 52},
+	{"Dealer #6" , 46},
+	{"Dealer #7" , 42},
+	{"Dealer #4" , 38},
+	{"Dealer #5" , 35},
+	{"Dealer #8" , 23},
+	{"Dealer #2" , 13},
+	{"Dealer #10", 2 }
+}

@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{0645491A-E399-4053-B96F-823251B54D5C}</ProjectGuid>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <Keyword>ManagedCProj</Keyword>
+    <RootNamespace>RDS</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)Atlmfc\incluse;$(WindowsSDK_IncludePath);$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)Atlmfc\incluse;$(WindowsSDK_IncludePath);$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\IOTCAPI_Release\Include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>IOTCAPIs.lib;user32.lib</AdditionalDependencies>
+      <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol>Main</EntryPointSymbol>
+      <AdditionalLibraryDirectories>..\..\IOTCAPI_Release\Lib\Win32</AdditionalLibraryDirectories>
+    </Link>
+    <ProjectReference>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\IOTCAPI_Release\Include;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>IOTCAPIs.lib;user32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\IOTCAPI_Release\Lib\Win32</AdditionalLibraryDirectories>
+      <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol>Main</EntryPointSymbol>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Private>false</Private>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DateTime_Form.cpp" />
+    <ClCompile Include="EcoSchedule_Form.cpp" />
+    <ClCompile Include="EH_Form.cpp" />
+    <ClCompile Include="FltSchedule_Form.cpp" />
+    <ClCompile Include="HistLogForm.cpp" />
+    <ClCompile Include="HistoryForm.cpp" />
+    <ClCompile Include="IOTcommunicator.cpp" />
+    <ClCompile Include="login.cpp" />
+    <ClCompile Include="nas_user.cpp" />
+    <ClCompile Include="OpenSCForm.cpp" />
+    <ClCompile Include="RDS_main_AD.cpp" />
+    <ClCompile Include="RDS_main_Form.cpp">
+      <DeploymentContent>true</DeploymentContent>
+    </ClCompile>
+    <ClCompile Include="RDS_main_Msg.cpp" />
+    <ClCompile Include="RDS_main_rtps.cpp" />
+    <ClCompile Include="RDS_main_UIupdate.cpp" />
+    <ClCompile Include="rptDisp.cpp" />
+    <ClCompile Include="set_FltDay_form.cpp" />
+    <ClCompile Include="set_PF_Form.cpp" />
+    <ClCompile Include="set_SF_Form.cpp" />
+    <ClCompile Include="set_T_form.cpp" />
+    <ClCompile Include="set_UVday_form.cpp" />
+    <ClCompile Include="SPA.cpp" />
+    <ClCompile Include="spa_cmd.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\IOTCAPI_Release\Include\IOTCAPIs.h" />
+    <ClInclude Include="DateTime_Form.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="EcoSchedule_Form.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="EH_Form.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ErrMsg.h" />
+    <ClInclude Include="FltSchedule_Form.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="HistLogForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="HistoryForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="IOTcommunicator.h" />
+    <ClInclude Include="Log.h" />
+    <ClInclude Include="login.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="main_global.h" />
+    <ClInclude Include="msg.h" />
+    <ClInclude Include="nas_user.h" />
+    <ClInclude Include="OpenSCForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="platform_Config.h" />
+    <ClInclude Include="RDSreport.h" />
+    <ClInclude Include="RDS_AD.h" />
+    <ClInclude Include="RDS_main_Form.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="RDS_project.h" />
+    <ClInclude Include="rptDisp.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="set_FltDay_form.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="set_PF_Form.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="set_SF_Form.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="set_T_form.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="set_UVday_form.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="SPA.h" />
+    <ClInclude Include="spa_cmd.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DateTime_Form.resx">
+      <DependentUpon>DateTime_Form.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EcoSchedule_Form.resx">
+      <DependentUpon>EcoSchedule_Form.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EH_Form.resx">
+      <DependentUpon>EH_Form.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FltSchedule_Form.resx">
+      <DependentUpon>FltSchedule_Form.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistLogForm.resx">
+      <DependentUpon>HistLogForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistoryForm.resx">
+      <DependentUpon>HistoryForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="login.resx">
+      <DependentUpon>login.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpenSCForm.resx">
+      <DependentUpon>OpenSCForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RDS_main_Form.resx">
+      <DependentUpon>RDS_main_Form.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptDisp.resx">
+      <DependentUpon>rptDisp.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="set_FltDay_form.resx">
+      <DependentUpon>set_FltDay_form.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="set_PF_Form.resx">
+      <DependentUpon>set_PF_Form.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="set_SF_Form.resx">
+      <DependentUpon>set_SF_Form.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="set_T_form.resx">
+      <DependentUpon>set_T_form.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="set_UVday_form.resx">
+      <DependentUpon>set_UVday_form.h</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Water_logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\IOTCAPI_Release\Lib\Win32\IOTCAPIs.dll">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
